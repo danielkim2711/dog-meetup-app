@@ -1,3 +1,9 @@
+:root {
+  --color-white: #fff;
+  --color-light-white: #eee;
+  --color-black: #000;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -10,25 +16,65 @@ body {
 
 /* Header */
 
+.remove-underline {
+  text-decoration: none;
+}
+
 .header {
-  background-color: rgb(40, 40, 40);
-  color: white;
-  font-size: 1rem;
+  background-color: var(--color-light-white);
   height: 70px;
   padding: 1.5rem;
+  letter-spacing: 1.5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.header__title {
+  font-size: 1.5rem;
+}
+
+.header a:visited {
+  color: var(--color-black);
+}
+
+.header a:hover {
+  color: #aaa;
+}
+
 .nav {
-  align-items: center;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0;
 }
 
 .nav__link {
   list-style: none;
   margin: 0 0.5rem;
+}
+
+/* Showcase */
+
+.showcase {
+  background: url('./images/doggy.jpg') no-repeat center;
+  background-size: cover;
+  filter: brightness(85%);
+  color: var(--color-white);
+  height: 550px;
+  text-shadow: 1px 1px 5px var(--color-black);
+}
+
+.showcase__container {
+  height: 100%;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.showcase h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0;
 }

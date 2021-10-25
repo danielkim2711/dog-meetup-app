@@ -1,12 +1,16 @@
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+// Component
+import './App.css';
 import Header from './components/Header';
+import Showcase from './components/Showcase';
 
 function App() {
   return (
-    <div>
+    <Router>
       <Header />
-    </div>
+      <Route path='/' component={Showcase} />
+    </Router>
   );
 }
 
