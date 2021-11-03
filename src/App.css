@@ -2,6 +2,11 @@
   --color-white: #fff;
   --color-light-white: #eee;
   --color-black: #000;
+  --bright-orange: hsl(31, 77%, 52%);
+  --dark-cyan: hsl(184, 100%, 22%);
+  --very-dark-cyan: hsl(179, 100%, 13%);
+  --transparent-white-paragraphs: hsla(0, 0%, 100%, 0.75);
+  --very-light-gray-background-headings-buttons: hsl(0, 0%, 95%);
 }
 
 * {
@@ -77,4 +82,85 @@ body {
 .showcase h1 {
   font-size: 2.5rem;
   margin-bottom: 0;
+}
+
+/* Card */
+
+.card {
+  display: flex;
+}
+
+.card h1 {
+  color: var(--very-light-gray-background-headings-buttons);
+  font-family: 'Big Shoulders Display', cursive;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.card p {
+  color: var(--transparent-white-paragraphs);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.card__container {
+  padding: 3rem;
+  width: 100%;
+}
+
+.card__sedan {
+  background-color: var(--bright-orange);
+}
+
+.card__suv {
+  background-color: var(--dark-cyan);
+}
+
+.card__luxury {
+  background-color: var(--very-dark-cyan);
+}
+
+.card__sedan p {
+  width: 22ch;
+}
+
+.card__suv p {
+  width: 23ch;
+}
+
+.card__luxury p {
+  height: 130px;
+  width: 23ch;
+}
+
+/* Button */
+
+.btn {
+  background-color: var(--very-light-gray-background-headings-buttons);
+  border-radius: 25px;
+  border: none;
+  font-size: 1rem;
+  margin: 1rem 0;
+  margin-top: 4rem;
+  padding: 1rem;
+  width: 150px;
+}
+
+.btn:hover {
+  background-color: transparent;
+  border: 2px solid var(--very-light-gray-background-headings-buttons);
+  color: var(--transparent-white-paragraphs);
+  cursor: pointer;
+}
+
+.btn__sedan {
+  color: var(--bright-orange);
+}
+
+.btn__suv {
+  color: var(--dark-cyan);
+}
+
+.btn__luxury {
+  color: var(--very-dark-cyan);
 }
