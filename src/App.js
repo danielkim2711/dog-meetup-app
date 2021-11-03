@@ -5,6 +5,7 @@ import './App.css';
 import Header from './components/Header';
 import Showcase from './components/Showcase';
 import Card from './components/Card';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Header />
       <Route path='/' component={Showcase} />
       <Card />
+      <Footer />
     </Router>
   );
 }

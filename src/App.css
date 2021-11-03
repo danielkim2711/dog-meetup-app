@@ -1,12 +1,11 @@
 :root {
   --color-white: #fff;
   --color-light-white: #eee;
+  --color-light-grey: #ddd;
   --color-black: #000;
   --bright-orange: hsl(31, 77%, 52%);
-  --dark-cyan: hsl(184, 100%, 22%);
-  --very-dark-cyan: hsl(179, 100%, 13%);
-  --transparent-white-paragraphs: hsla(0, 0%, 100%, 0.75);
-  --very-light-gray-background-headings-buttons: hsl(0, 0%, 95%);
+  --bright-green: hsl(150, 100%, 25%);
+  --very-dark-cyan: hsl(180, 100%, 10%);
 }
 
 * {
@@ -91,14 +90,13 @@ body {
 }
 
 .card h1 {
-  color: var(--very-light-gray-background-headings-buttons);
-  font-family: 'Big Shoulders Display', cursive;
+  color: var(--color-white);
   font-size: 2.5rem;
   text-transform: uppercase;
 }
 
 .card p {
-  color: var(--transparent-white-paragraphs);
+  color: var(--color-light-grey);
   font-size: 15px;
   line-height: 1.75;
 }
@@ -113,7 +111,7 @@ body {
 }
 
 .card__suv {
-  background-color: var(--dark-cyan);
+  background-color: var(--bright-green);
 }
 
 .card__luxury {
@@ -136,7 +134,7 @@ body {
 /* Button */
 
 .btn {
-  background-color: var(--very-light-gray-background-headings-buttons);
+  background-color: var(--color-light-white);
   border-radius: 25px;
   border: none;
   font-size: 1rem;
@@ -148,8 +146,8 @@ body {
 
 .btn:hover {
   background-color: transparent;
-  border: 2px solid var(--very-light-gray-background-headings-buttons);
-  color: var(--transparent-white-paragraphs);
+  border: 2px solid var(--color-light-white);
+  color: var(--color-light-white);
   cursor: pointer;
 }
 
@@ -158,9 +156,18 @@ body {
 }
 
 .btn__suv {
-  color: var(--dark-cyan);
+  color: var(--bright-green);
 }
 
 .btn__luxury {
   color: var(--very-dark-cyan);
+}
+
+/* Footer */
+
+.footer {
+  background-color: var(--color-light-grey);
+  color: var(--color-black);
+  padding: 0.5rem;
+  text-align: center;
 }
