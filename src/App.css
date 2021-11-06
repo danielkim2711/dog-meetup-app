@@ -5,7 +5,7 @@
   --color-black: #000;
   --bright-orange: hsl(31, 77%, 52%);
   --bright-green: hsl(150, 100%, 25%);
-  --very-dark-cyan: hsl(180, 100%, 10%);
+  --dark-sky-blue: hsl(180, 100%, 30%);
 }
 
 * {
@@ -115,7 +115,7 @@ body {
 }
 
 .card__luxury {
-  background-color: var(--very-dark-cyan);
+  background-color: var(--dark-sky-blue);
 }
 
 .card__sedan p {
@@ -160,7 +160,7 @@ body {
 }
 
 .btn__luxury {
-  color: var(--very-dark-cyan);
+  color: var(--dark-sky-blue);
 }
 
 /* Footer */

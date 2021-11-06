@@ -14,6 +14,9 @@ const Header = () => {
         <li className='nav__link'>ABOUT</li>
         <li className='nav__link'>CONTACT</li>
         <li className='nav__link'>SIGN IN</li>
+        <Link to='/register' className='nav__link remove-underline'>
+          <li>REGISTER</li>
+        </Link>
       </ul>
     </div>
   );

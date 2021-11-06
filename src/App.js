@@ -1,18 +1,18 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-// Component
+// Components
 import './App.css';
 import Header from './components/Header';
-import Showcase from './components/Showcase';
-import Card from './components/Card';
+import HomePage from './pages/HomePage';
+import RegisterPage from './pages/RegisterPage';
 import Footer from './components/Footer';
 
 function App() {
   return (
     <Router>
       <Header />
-      <Route path='/' component={Showcase} />
-      <Card />
+      <Route path='/' exact component={HomePage} />
+      <Route path='/register' component={RegisterPage} />
       <Footer />
     </Router>
   );
