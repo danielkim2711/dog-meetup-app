@@ -106,29 +106,28 @@ body {
   width: 100%;
 }
 
-.card__sedan {
+.card__fast {
   background-color: var(--bright-orange);
 }
 
-.card__suv {
+.card__easy {
   background-color: var(--bright-green);
 }
 
-.card__luxury {
+.card__reliable {
   background-color: var(--dark-sky-blue);
 }
 
-.card__sedan p {
-  width: 22ch;
+.card__fast p {
+  width: 25ch;
 }
 
-.card__suv p {
-  width: 23ch;
+.card__easy p {
+  width: 25ch;
 }
 
-.card__luxury p {
-  height: 130px;
-  width: 23ch;
+.card__reliable p {
+  width: 25ch;
 }
 
 /* Button */
@@ -151,15 +150,15 @@ body {
   cursor: pointer;
 }
 
-.btn__sedan {
+.btn__fast {
   color: var(--bright-orange);
 }
 
-.btn__suv {
+.btn__easy {
   color: var(--bright-green);
 }
 
-.btn__luxury {
+.btn__reliable {
   color: var(--dark-sky-blue);
 }
 

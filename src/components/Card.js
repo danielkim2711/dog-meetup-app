@@ -3,29 +3,31 @@ import React from 'react';
 const Card = () => {
   return (
     <div className='card'>
-      <div className='card__container card__sedan'>
+      <div className='card__container card__fast'>
         <h1>Fast</h1>
         <p>
-          Choose a sedan for its affordability and excellent fuel economy. Ideal
-          for cruising in the city or on your next road trip.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet ad nulla
+          commodi pariatur inventore enim. Aut maxime expedita quasi quibusdam!
         </p>
-        <button className='btn btn__sedan'>Learn More</button>
+        <button className='btn btn__fast'>Learn More</button>
       </div>
-      <div className='card__container card__suv'>
+      <div className='card__container card__easy'>
         <h1>Easy</h1>
         <p>
-          Take an SUV for its spacious interior, power, and versatility. Perfect
-          for your next family vacation and off-road adventures.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
+          explicabo mollitia ex fuga aperiam obcaecati doloribus cum rem
+          necessitatibus consectetur?
         </p>
-        <button className='btn btn__suv'>Learn More</button>
+        <button className='btn btn__easy'>Learn More</button>
       </div>
-      <div className='card__container card__luxury'>
+      <div className='card__container card__reliable'>
         <h1>Reliable</h1>
         <p>
-          Cruise in the best car brands without the bloated prices. Enjoy the
-          enhanced comfort of a luxury rental and arrive in style.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam enim
+          voluptatum ea porro aut deserunt blanditiis provident odit
+          perspiciatis commodi?
         </p>
-        <button className='btn btn__luxury'>Learn More</button>
+        <button className='btn btn__reliable'>Learn More</button>
       </div>
     </div>
   );
