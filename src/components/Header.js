@@ -13,7 +13,9 @@ const Header = () => {
         </Link>
         <li className='nav__link'>ABOUT</li>
         <li className='nav__link'>CONTACT</li>
-        <li className='nav__link'>SIGN IN</li>
+        <Link to='/signin' className='nav__link remove-underline'>
+          <li>SIGN IN</li>
+        </Link>
         <Link to='/register' className='nav__link remove-underline'>
           <li>REGISTER</li>
         </Link>
