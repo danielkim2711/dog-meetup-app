@@ -1,9 +1,12 @@
 import React from 'react';
 
+// Components
+import Registration from '../components/Registration';
+
 const RegisterPage = () => {
   return (
-    <div>
-      <h1>Register here...</h1>
+    <div className='form__container'>
+      <Registration />
     </div>
   );
 };
