@@ -26,7 +26,7 @@ body {
 
 .header {
   background-color: var(--color-light-white);
-  height: 70px;
+  height: 8vh;
   padding: 1.5rem;
   letter-spacing: 1.5px;
   display: flex;
@@ -63,11 +63,11 @@ body {
 /* Showcase */
 
 .showcase {
-  background: url('./images/index.jpg') no-repeat center;
+  background: url('./images/home.jpg') no-repeat center;
   background-size: cover;
   filter: brightness(85%);
   color: var(--color-white);
-  height: 550px;
+  height: 80vh;
   text-shadow: 1px 1px 5px var(--color-black);
 }
 
@@ -167,18 +167,27 @@ body {
 /* Form */
 
 .form__container {
-  background: url('./images/register.jpg') no-repeat left;
   filter: brightness(95%);
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+}
+
+.signInForm {
+  background: url('./images/signin.jpg') top -200px left no-repeat;
+  background-size: cover;
+}
+
+.RegistrationForm {
+  background: url('./images/register.jpg') no-repeat center;
 }
 
 .form__card {
   background-color: var(--color-white);
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  margin: 1rem 0;
   width: 500px;
 }
 

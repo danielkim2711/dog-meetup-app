@@ -1,9 +1,12 @@
 import React from 'react';
 
+// Components
+import SignIn from '../components/SignIn';
+
 const SignInPage = () => {
   return (
-    <div>
-      <h1>Sign in here...</h1>
+    <div className='form__container signInForm'>
+      <SignIn />
     </div>
   );
 };
