@@ -168,7 +168,6 @@ body {
 
 .form__container {
   filter: brightness(95%);
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -178,10 +177,13 @@ body {
 .signInForm {
   background: url('./images/signin.jpg') top -200px left no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 
 .RegistrationForm {
   background: url('./images/register.jpg') no-repeat center;
+  background-size: cover;
+  height: 900px;
 }
 
 .form__card {
@@ -222,8 +224,8 @@ body {
 
 .control__radio {
   display: flex;
-  justify-content: space-evenly;
-  padding: 1rem 0;
+  justify-content: space-between;
+  padding: 0.5rem 0;
 }
 
 .actions {
