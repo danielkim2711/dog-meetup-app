@@ -1,7 +1,9 @@
-import React, { useRef, useHistory } from 'react';
+import React, { useRef } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const Registration = () => {
-  // const history = useHistory();
+  const history = useHistory();
 
   const firstNameInputRef = useRef();
   const lastNameInputRef = useRef();
@@ -10,18 +12,34 @@ const Registration = () => {
   const passwordInputRef = useRef();
   const addressInputRef = useRef();
 
-  const createUser = async (userData) => {
-    await fetch('http://127.0.0.1:8000/api/users/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    });
-    // history.replace('/');
+  // Use async await fetch AJAX
+
+  // const createUser = async (userData) => {
+  //   await fetch('http://127.0.0.1:8000/api/users/', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(userData),
+  //   });
+  //   history.replace('/');
+  // };
+
+  // Use Axios AJAX (POST)
+
+  const createUser = (userData) => {
+    axios
+      .post('http://127.0.0.1:8000/api/users/', userData)
+      .then((res) => {
+        alert('Thank You. Account created successfully.', res);
+      })
+      .catch((err) => {
+        alert('Sorry, there was a problem. Please try again later', err);
+      });
+    history.replace('/');
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const enteredFirstName = firstNameInputRef.current.value;
