@@ -5,6 +5,9 @@ import axios from 'axios';
 const Registration = () => {
   const history = useHistory();
 
+  const [emailError, setEmailError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState();
+
   const userNameInputRef = useRef();
   const firstNameInputRef = useRef();
   const lastNameInputRef = useRef();
@@ -15,7 +18,6 @@ const Registration = () => {
 
   const handleGender = (e) => {
     setGender(e.currentTarget.value);
-    console.log(gender);
   };
 
   // Use async await fetch AJAX
@@ -37,7 +39,7 @@ const Registration = () => {
     axios
       .post('http://127.0.0.1:8000/api/users/', userData)
       .then((res) => {
-        alert('Thank You. Account created successfully.', res);
+        alert('Thank You. Your account created successfully.', res);
       })
       .catch((err) => {
         alert('Sorry, there was a problem. Please try again later', err);
@@ -65,6 +67,23 @@ const Registration = () => {
       password: enteredPassword,
       address: enteredAddress,
     };
+
+    // Form Validation
+
+    // Email Input Validation
+
+    const email = userData.email;
+    const atpos = email.indexOf('@');
+    const dotpos = email.lastIndexOf('.');
+
+    if (atpos < 1 || dotpos - atpos < 2) {
+      setEmailError(true);
+      emailInputRef.current.value = '';
+      setErrorMessage('Please type a valid email ID.');
+      return false;
+    }
+    setEmailError(false);
+    setErrorMessage();
 
     createUser(userData);
   };
@@ -107,7 +126,14 @@ const Registration = () => {
         </div>
         <div className='control'>
           <label htmlFor='email'>Email *</label>
-          <input type='text' required id='email' ref={emailInputRef} />
+          <input
+            className={emailError === true ? 'error' : ''}
+            placeholder={emailError === true ? errorMessage : ''}
+            type='text'
+            required
+            id='email'
+            ref={emailInputRef}
+          />
         </div>
         <div className='control'>
           <label htmlFor='password'>Password *</label>

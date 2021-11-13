@@ -221,6 +221,10 @@ body {
   width: 100%;
 }
 
+.form .control .error {
+  border: 2px solid red;
+}
+
 .control__radio {
   display: flex;
   justify-content: space-between;
