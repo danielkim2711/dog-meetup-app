@@ -6,8 +6,8 @@ const SignIn = () => {
       <form className='form'>
         <h1 className='form__title'>Sign in</h1>
         <div className='control'>
-          <label htmlFor='email'>Email</label>
-          <input type='text' required id='email' />
+          <label htmlFor='username'>Username</label>
+          <input type='text' required id='username' />
         </div>
         <div className='control'>
           <label htmlFor='password'>Password</label>

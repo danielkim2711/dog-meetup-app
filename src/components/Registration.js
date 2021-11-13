@@ -1,16 +1,22 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const Registration = () => {
   const history = useHistory();
 
+  const userNameInputRef = useRef();
   const firstNameInputRef = useRef();
   const lastNameInputRef = useRef();
-  // const genderInputRef = useRef();
+  const [gender, setGender] = useState();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const addressInputRef = useRef();
+
+  const handleGender = (e) => {
+    setGender(e.currentTarget.value);
+    console.log(gender);
+  };
 
   // Use async await fetch AJAX
 
@@ -42,17 +48,19 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const enteredUserName = userNameInputRef.current.value;
     const enteredFirstName = firstNameInputRef.current.value;
     const enteredLastName = lastNameInputRef.current.value;
-    // const enteredGender = genderInputRef.current.value;
+    const enteredGender = gender;
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
     const enteredAddress = addressInputRef.current.value;
 
     const userData = {
+      user_name: enteredUserName,
       first_name: enteredFirstName,
       last_name: enteredLastName,
-      // gender: enteredGender,
+      gender: enteredGender,
       email: enteredEmail,
       password: enteredPassword,
       address: enteredAddress,
@@ -65,10 +73,10 @@ const Registration = () => {
     <div className='form__card'>
       <form className='form' onSubmit={handleSubmit}>
         <h1 className='form__title'>Create Account</h1>
-        {/* <div className='control'>
+        <div className='control'>
           <label htmlFor='username'>Username *</label>
-          <input type='text' required id='username' />
-        </div> */}
+          <input type='text' required id='username' ref={userNameInputRef} />
+        </div>
         <div className='control'>
           <label htmlFor='firstName'>First Name *</label>
           <input type='text' required id='firstName' ref={firstNameInputRef} />
@@ -77,14 +85,15 @@ const Registration = () => {
           <label htmlFor='lastName'>Last Name *</label>
           <input type='text' required id='lastName' ref={lastNameInputRef} />
         </div>
-        {/* <div className='control control__radio'>
+        <div className='control control__radio'>
           <label htmlFor='male'>Male</label>
           <input
             type='radio'
             required
             id='male'
             name='gender'
-            ref={genderInputRef}
+            value='M'
+            onClick={handleGender}
           />
           <label htmlFor='female'>Female</label>
           <input
@@ -92,9 +101,10 @@ const Registration = () => {
             required
             id='female'
             name='gender'
-            ref={genderInputRef}
+            value='F'
+            onClick={handleGender}
           />
-        </div> */}
+        </div>
         <div className='control'>
           <label htmlFor='email'>Email *</label>
           <input type='text' required id='email' ref={emailInputRef} />
@@ -112,15 +122,6 @@ const Registration = () => {
           <label htmlFor='address'>Address *</label>
           <input type='text' required id='address' ref={addressInputRef} />
         </div>
-        {/* <h1 className='form__title'>Dog Details</h1>
-        <div className='control'>
-          <label htmlFor='dogName'>Dog Name *</label>
-          <input type='text' required id='dogName' />
-        </div>
-        <div className='control'>
-          <label htmlFor='dogBreed'>Dog Breed *</label>
-          <input type='text' required id='dogBreed' />
-        </div> */}
         <div className='actions'>
           <button>Sign Up</button>
         </div>
