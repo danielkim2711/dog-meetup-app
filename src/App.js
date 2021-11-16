@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 // Components
 import './App.css';
@@ -10,13 +11,15 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Route path='/' exact component={HomePage} />
-      <Route path='/register' component={RegisterPage} />
-      <Route path='/signin' component={SignInPage} />
-      <Footer />
-    </Router>
+    <CookiesProvider>
+      <Router>
+        <Header />
+        <Route path='/' exact component={HomePage} />
+        <Route path='/register' component={RegisterPage} />
+        <Route path='/signin' component={SignInPage} />
+        <Footer />
+      </Router>
+    </CookiesProvider>
   );
 }
 

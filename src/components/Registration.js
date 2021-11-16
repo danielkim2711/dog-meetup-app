@@ -9,11 +9,11 @@ const Registration = () => {
   const [errorMessage, setErrorMessage] = useState();
 
   const userNameInputRef = useRef();
+  const passwordInputRef = useRef();
   const firstNameInputRef = useRef();
   const lastNameInputRef = useRef();
   const [gender, setGender] = useState();
   const emailInputRef = useRef();
-  const passwordInputRef = useRef();
   const addressInputRef = useRef();
 
   const handleGender = (e) => {
@@ -22,28 +22,38 @@ const Registration = () => {
 
   // Use async await fetch AJAX
 
-  // const createUser = async (userData) => {
+  // const createUserDetail = async (userDetail) => {
   //   await fetch('http://127.0.0.1:8000/api/users/', {
   //     method: 'POST',
   //     headers: {
   //       'Content-Type': 'application/json',
   //     },
-  //     body: JSON.stringify(userData),
+  //     body: JSON.stringify(userDetail),
   //   });
   //   history.replace('/');
   // };
 
   // Use Axios AJAX (POST)
 
-  const createUser = (userData) => {
+  const createUserLogin = (userLogin) => {
     axios
-      .post('http://127.0.0.1:8000/api/users/', userData)
-      .then((res) => {
-        alert('Thank You. Your account created successfully.', res);
-      })
-      .catch((err) => {
-        alert('Sorry, there was a problem. Please try again later', err);
-      });
+      .post('http://127.0.0.1:8000/api/users/', userLogin)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
+  const createUserDetail = (userDetail) => {
+    axios
+      .post('http://127.0.0.1:8000/api/profiles/', userDetail)
+      .then((res) =>
+        alert('Thank You. Your account created successfully.', console.log(res))
+      )
+      .catch((err) =>
+        alert(
+          'Sorry, there was a problem. Please try again later',
+          console.log(err)
+        )
+      );
     history.replace('/');
   };
 
@@ -51,20 +61,23 @@ const Registration = () => {
     e.preventDefault();
 
     const enteredUserName = userNameInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
     const enteredFirstName = firstNameInputRef.current.value;
     const enteredLastName = lastNameInputRef.current.value;
     const enteredGender = gender;
     const enteredEmail = emailInputRef.current.value;
-    const enteredPassword = passwordInputRef.current.value;
     const enteredAddress = addressInputRef.current.value;
 
-    const userData = {
-      user_name: enteredUserName,
+    const userLogin = {
+      username: enteredUserName,
+      password: enteredPassword,
+    };
+
+    const userDetail = {
       first_name: enteredFirstName,
       last_name: enteredLastName,
       gender: enteredGender,
       email: enteredEmail,
-      password: enteredPassword,
       address: enteredAddress,
     };
 
@@ -72,7 +85,7 @@ const Registration = () => {
 
     // Email Input Validation
 
-    const email = userData.email;
+    const email = userDetail.email;
     const atpos = email.indexOf('@');
     const dotpos = email.lastIndexOf('.');
 
@@ -85,7 +98,8 @@ const Registration = () => {
     setEmailError(false);
     setErrorMessage();
 
-    createUser(userData);
+    createUserLogin(userLogin);
+    createUserDetail(userDetail);
   };
 
   return (
@@ -95,6 +109,15 @@ const Registration = () => {
         <div className='control'>
           <label htmlFor='username'>Username *</label>
           <input type='text' required id='username' ref={userNameInputRef} />
+        </div>
+        <div className='control'>
+          <label htmlFor='password'>Password *</label>
+          <input
+            type='password'
+            required
+            id='password'
+            ref={passwordInputRef}
+          />
         </div>
         <div className='control'>
           <label htmlFor='firstName'>First Name *</label>
@@ -133,15 +156,6 @@ const Registration = () => {
             required
             id='email'
             ref={emailInputRef}
-          />
-        </div>
-        <div className='control'>
-          <label htmlFor='password'>Password *</label>
-          <input
-            type='password'
-            required
-            id='password'
-            ref={passwordInputRef}
           />
         </div>
         <div className='control'>
