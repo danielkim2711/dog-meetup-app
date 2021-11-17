@@ -31,9 +31,26 @@ const Header = () => {
             <li>LOG OUT</li>
           </Link>
         )}
-        <Link to='/register' className='nav__link remove-underline'>
-          <li>REGISTER</li>
-        </Link>
+        {cookies.get('myToken') === undefined ? (
+          <Link to='/register' className='nav__link remove-underline'>
+            <li>REGISTER</li>
+          </Link>
+        ) : (
+          <div className='dropdown'>
+            <button className='dropbtn'>Dropdown</button>
+            <div className='dropdown-content'>
+              <Link to='/' className='remove-underline'>
+                <li>Profile</li>
+              </Link>
+              <Link to='/' className='remove-underline'>
+                <li>My Dogs</li>
+              </Link>
+              <Link to='/' className='remove-underline'>
+                <li>Activities</li>
+              </Link>
+            </div>
+          </div>
+        )}
       </ul>
     </div>
   );
