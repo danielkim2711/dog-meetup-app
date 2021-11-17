@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 import Cookies from 'universal-cookie';
@@ -6,18 +7,20 @@ import Cookies from 'universal-cookie';
 import './App.css';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
-import RegisterPage from './pages/RegisterPage';
 import ActivityPage from './pages/ActivityPage';
 import SignInPage from './pages/SignInPage';
+import RegisterPage from './pages/RegisterPage';
 import Footer from './components/Footer';
 
 function App() {
   const cookies = new Cookies();
+  const [userId, setUserId] = useState();
+  const [username, setUsername] = useState();
 
   return (
     <CookiesProvider>
       <Router>
-        <Header />
+        <Header username={username} />
         <Route
           path='/'
           exact
@@ -25,12 +28,15 @@ function App() {
             cookies.get('myToken') === undefined ? (
               <HomePage />
             ) : (
-              <ActivityPage />
+              <ActivityPage userId={userId} setUsername={setUsername} />
             )
           }
         />
         <Route path='/register' component={RegisterPage} />
-        <Route path='/signin' component={SignInPage} />
+        <Route
+          path='/signin'
+          component={() => <SignInPage setUserId={setUserId} />}
+        />
         <Footer />
       </Router>
     </CookiesProvider>

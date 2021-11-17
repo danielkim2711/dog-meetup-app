@@ -3,10 +3,10 @@ import React from 'react';
 // Components
 import SignIn from '../components/SignIn';
 
-const SignInPage = () => {
+const SignInPage = ({ setUserId }) => {
   return (
     <div className='form__container signInForm'>
-      <SignIn />
+      <SignIn setUserId={setUserId} />
     </div>
   );
 };

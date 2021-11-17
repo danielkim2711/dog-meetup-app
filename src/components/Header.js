@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Cookies from 'universal-cookie';
 import { useCookies } from 'react-cookie';
+import Cookies from 'universal-cookie';
 
-const Header = () => {
+const Header = ({ username }) => {
   const cookies = new Cookies();
   const [token, setToken, removeToken] = useCookies(['myToken']);
 
   return (
     <div className='header'>
+      {console.log(username)}
       <Link to='/' className='header__title remove-underline'>
         <p>Meetcha Dogs</p>
       </Link>
@@ -37,7 +38,7 @@ const Header = () => {
           </Link>
         ) : (
           <div className='dropdown'>
-            <button className='dropbtn'>Dropdown</button>
+            <button className='dropbtn'>{username}</button>
             <div className='dropdown-content'>
               <Link to='/' className='remove-underline'>
                 <li>Profile</li>

@@ -5,7 +5,6 @@ import axios from 'axios';
 const Registration = () => {
   const history = useHistory();
 
-  const [adminToken] = useState('53937a7326db261addb0b9c1a8218ba8a11d8f15');
   const [emailError, setEmailError] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
 
@@ -88,11 +87,7 @@ const Registration = () => {
     setErrorMessage();
 
     axios
-      .post('http://127.0.0.1:8000/api/profiles/', userDetail, {
-        headers: {
-          Authorization: `Token ${adminToken}`,
-        },
-      })
+      .post('http://127.0.0.1:8000/api/profiles/', userDetail)
       .then((res) => {
         alert('Thank You. Your account created successfully.');
         console.log(res);

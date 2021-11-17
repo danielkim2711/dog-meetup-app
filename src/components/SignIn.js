@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useCookies } from 'react-cookie';
 import { useHistory } from 'react-router';
 import axios from 'axios';
 
-const SignIn = () => {
+const SignIn = ({ setUserId }) => {
   const history = useHistory();
-  const [userId, setUserId] = useState();
   const [token, setToken] = useCookies(['myToken']);
 
   const userNameInputRef = useRef();
@@ -19,8 +18,9 @@ const SignIn = () => {
     axios
       .post('http://127.0.0.1:8000/auth/', userLogin)
       .then((res) => {
-        setUserId(res.data.id);
+        setUserId(res.data.user_id);
         setToken('myToken', res.data.token);
+        console.log(res, token);
       })
       .catch((err) => {
         alert('Sorry, could not login. Please check your account');
@@ -44,7 +44,6 @@ const SignIn = () => {
 
   return (
     <div className='form__card'>
-      {console.log(userId)}
       <form className='form' onSubmit={handleSubmit}>
         <h1 className='form__title'>Sign in</h1>
         <div className='control'>
