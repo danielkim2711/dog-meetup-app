@@ -5,10 +5,11 @@ import axios from 'axios';
 const Registration = () => {
   const history = useHistory();
 
+  const [adminToken] = useState('53937a7326db261addb0b9c1a8218ba8a11d8f15');
   const [emailError, setEmailError] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
 
-  const userNameInputRef = useRef();
+  const usernameInputRef = useRef();
   const passwordInputRef = useRef();
   const firstNameInputRef = useRef();
   const lastNameInputRef = useRef();
@@ -35,43 +36,31 @@ const Registration = () => {
 
   // Use Axios AJAX (POST)
 
-  const createUserLogin = (userLogin) => {
-    axios
-      .post('http://127.0.0.1:8000/api/users/', userLogin)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
-
-  const createUserDetail = (userDetail) => {
-    axios
-      .post('http://127.0.0.1:8000/api/profiles/', userDetail)
-      .then((res) =>
-        alert('Thank You. Your account created successfully.', console.log(res))
-      )
-      .catch((err) =>
-        alert(
-          'Sorry, there was a problem. Please try again later',
-          console.log(err)
-        )
-      );
-    history.replace('/');
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const enteredUserName = userNameInputRef.current.value;
+    const enteredUsername = usernameInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    let enteredUser;
+
+    const userLogin = {
+      username: enteredUsername,
+      password: enteredPassword,
+    };
+
+    await axios
+      .post('http://127.0.0.1:8000/api/users/', userLogin)
+      .then((res) => {
+        enteredUser = res.data.id;
+        console.log(res, enteredUser);
+      })
+      .catch((err) => console.log(err));
+
     const enteredFirstName = firstNameInputRef.current.value;
     const enteredLastName = lastNameInputRef.current.value;
     const enteredGender = gender;
     const enteredEmail = emailInputRef.current.value;
     const enteredAddress = addressInputRef.current.value;
-
-    const userLogin = {
-      username: enteredUserName,
-      password: enteredPassword,
-    };
 
     const userDetail = {
       first_name: enteredFirstName,
@@ -79,15 +68,15 @@ const Registration = () => {
       gender: enteredGender,
       email: enteredEmail,
       address: enteredAddress,
+      user: enteredUser,
     };
 
     // Form Validation
 
     // Email Input Validation
 
-    const email = userDetail.email;
-    const atpos = email.indexOf('@');
-    const dotpos = email.lastIndexOf('.');
+    const atpos = userDetail.email.indexOf('@');
+    const dotpos = userDetail.email.lastIndexOf('.');
 
     if (atpos < 1 || dotpos - atpos < 2) {
       setEmailError(true);
@@ -98,8 +87,21 @@ const Registration = () => {
     setEmailError(false);
     setErrorMessage();
 
-    createUserLogin(userLogin);
-    createUserDetail(userDetail);
+    axios
+      .post('http://127.0.0.1:8000/api/profiles/', userDetail, {
+        headers: {
+          Authorization: `Token ${adminToken}`,
+        },
+      })
+      .then((res) => {
+        alert('Thank You. Your account created successfully.');
+        console.log(res);
+      })
+      .catch((err) => {
+        alert('Sorry, there was a problem. Please try again later');
+        console.log(err);
+      });
+    history.replace('/');
   };
 
   return (
@@ -108,7 +110,7 @@ const Registration = () => {
         <h1 className='form__title'>Create Account</h1>
         <div className='control'>
           <label htmlFor='username'>Username *</label>
-          <input type='text' required id='username' ref={userNameInputRef} />
+          <input type='text' required id='username' ref={usernameInputRef} />
         </div>
         <div className='control'>
           <label htmlFor='password'>Password *</label>

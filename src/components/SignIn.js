@@ -1,21 +1,31 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useCookies } from 'react-cookie';
 import { useHistory } from 'react-router';
 import axios from 'axios';
 
 const SignIn = () => {
   const history = useHistory();
+  const [userId, setUserId] = useState();
   const [token, setToken] = useCookies(['myToken']);
 
   const userNameInputRef = useRef();
   const passwordInputRef = useRef();
 
+  useEffect(() => {
+    token['myToken'] && history.replace('/');
+  }, [token, history]);
+
   const loginUser = (userLogin) => {
     axios
       .post('http://127.0.0.1:8000/auth/', userLogin)
-      .then((res) => setToken('myToken', res.data.token))
-      .catch((err) => console.log(err));
-    history.replace('/');
+      .then((res) => {
+        setUserId(res.data.id);
+        setToken('myToken', res.data.token);
+      })
+      .catch((err) => {
+        alert('Sorry, could not login. Please check your account');
+        console.log(err);
+      });
   };
 
   const handleSubmit = (e) => {
@@ -34,6 +44,7 @@ const SignIn = () => {
 
   return (
     <div className='form__card'>
+      {console.log(userId)}
       <form className='form' onSubmit={handleSubmit}>
         <h1 className='form__title'>Sign in</h1>
         <div className='control'>
