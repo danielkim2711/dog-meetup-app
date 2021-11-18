@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 
 const ActivityPage = ({ userId, setUsername }) => {
   const [token, setToken, removeToken] = useCookies(['myToken']);
+
+  const [image, setImage] = useState();
 
   useEffect(() => {
     fetchUsername(userId);
@@ -18,6 +20,7 @@ const ActivityPage = ({ userId, setUsername }) => {
       })
       .then((res) => {
         setUsername(res.data.first_name);
+        setImage(res.data.picture.url);
         console.log(res);
       })
       .catch((err) => {
@@ -27,7 +30,8 @@ const ActivityPage = ({ userId, setUsername }) => {
 
   return (
     <div>
-      <h1>Hello World</h1>
+      <h1>Activities List</h1>
+      <img src={image} />
     </div>
   );
 };

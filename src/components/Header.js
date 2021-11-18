@@ -17,8 +17,12 @@ const Header = ({ username }) => {
         <Link to='/' className='nav__link remove-underline'>
           <li>HOME</li>
         </Link>
-        <li className='nav__link'>ABOUT</li>
-        <li className='nav__link'>CONTACT</li>
+        <Link to='/about' className='nav__link remove-underline'>
+          <li>ABOUT</li>
+        </Link>
+        <Link to='/contact' className='nav__link remove-underline'>
+          <li>CONTACT</li>
+        </Link>
         {cookies.get('myToken') === undefined ? (
           <Link to='/signin' className='nav__link remove-underline'>
             <li>SIGN IN</li>
@@ -40,13 +44,13 @@ const Header = ({ username }) => {
           <div className='dropdown'>
             <button className='dropbtn'>{username}</button>
             <div className='dropdown-content'>
-              <Link to='/' className='remove-underline'>
+              <Link to='/profile' className='remove-underline'>
                 <li>Profile</li>
               </Link>
-              <Link to='/' className='remove-underline'>
+              <Link to='/dogs' className='remove-underline'>
                 <li>My Dogs</li>
               </Link>
-              <Link to='/' className='remove-underline'>
+              <Link to='/activities' className='remove-underline'>
                 <li>Activities</li>
               </Link>
             </div>
