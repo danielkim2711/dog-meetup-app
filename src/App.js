@@ -65,7 +65,12 @@ function App() {
           path='/dogs'
           component={() => <DogsPage loadedLoggedInUser={loadedLoggedInUser} />}
         />
-        <Route path='/activities' component={MyActivitiesPage} />
+        <Route
+          path='/activities'
+          component={() => (
+            <MyActivitiesPage loadedLoggedInUser={loadedLoggedInUser} />
+          )}
+        />
         <Footer />
       </Router>
     </CookiesProvider>

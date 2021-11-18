@@ -1,10 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useCookies } from 'react-cookie';
+import axios from 'axios';
 
-const MyActivitiesPage = () => {
+// Components
+import MyActivitiesList from '../components/MyActivitiesList';
+
+const MyActivitiesPage = ({ loadedLoggedInUser }) => {
+  const [token, setToken, removeToken] = useCookies(['myToken']);
+
+  const [activitiesList, setActivitiesList] = useState([]);
+
+  useEffect(() => {
+    fetchActivities();
+  }, []);
+
+  const fetchActivities = () => {
+    axios
+      .get('http://127.0.0.1:8000/api/activities/', {
+        headers: {
+          Authorization: `Token ${token['myToken']}`,
+        },
+      })
+      .then((res) => {
+        const activities = [];
+        res.data.forEach((activity) =>
+          activity.user === loadedLoggedInUser.user_id
+            ? activities.push(activity)
+            : console.log('Error occured to forEach')
+        );
+        setActivitiesList(activities);
+      })
+      .catch((err) => console.log('Error! :', err));
+  };
+
   return (
-    <div>
+    <section className='activity__section'>
       <h1>My Activities</h1>
-    </div>
+      {activitiesList.length !== 0 ? (
+        <MyActivitiesList activitiesList={activitiesList} />
+      ) : (
+        <h1>You haven't posted any activities yet</h1>
+      )}
+    </section>
   );
 };
 

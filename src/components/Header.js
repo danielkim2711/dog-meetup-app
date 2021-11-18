@@ -50,7 +50,7 @@ const Header = ({ username }) => {
                 <li>My Dogs</li>
               </Link>
               <Link to='/activities' className='remove-underline'>
-                <li>Activities</li>
+                <li>My Activities</li>
               </Link>
             </div>
           </div>
