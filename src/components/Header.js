@@ -9,7 +9,6 @@ const Header = ({ username }) => {
 
   return (
     <div className='header'>
-      {console.log(username)}
       <Link to='/' className='header__title remove-underline'>
         <p>Meetcha Dogs</p>
       </Link>

@@ -3,7 +3,11 @@ import { useCookies } from 'react-cookie';
 import { useHistory } from 'react-router';
 import axios from 'axios';
 
-const SignIn = ({ setUserId }) => {
+const SignIn = ({
+  loadedLoggedInUser,
+  setloadedLoggedInUser,
+  setLoadedProfile,
+}) => {
   const history = useHistory();
   const [token, setToken] = useCookies(['myToken']);
 
@@ -11,24 +15,27 @@ const SignIn = ({ setUserId }) => {
   const passwordInputRef = useRef();
 
   useEffect(() => {
+    fetchUserProfile();
     token['myToken'] && history.replace('/');
-  }, [token, history]);
+  }, [token]);
 
-  const loginUser = (userLogin) => {
+  const fetchUserProfile = () => {
     axios
-      .post('http://127.0.0.1:8000/auth/', userLogin)
+      .get(`http://127.0.0.1:8000/api/profiles/${loadedLoggedInUser.user_id}`, {
+        headers: {
+          Authorization: `Token ${token['myToken']}`,
+        },
+      })
       .then((res) => {
-        setUserId(res.data.user_id);
-        setToken('myToken', res.data.token);
-        console.log(res, token);
+        setLoadedProfile(res.data);
+        console.log('Fetched Profile', res);
       })
       .catch((err) => {
-        alert('Sorry, could not login. Please check your account');
         console.log(err);
       });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const enteredUserName = userNameInputRef.current.value;
@@ -39,7 +46,17 @@ const SignIn = ({ setUserId }) => {
       password: enteredPassword,
     };
 
-    loginUser(userLogin);
+    await axios
+      .post('http://127.0.0.1:8000/auth/', userLogin)
+      .then((res) => {
+        setloadedLoggedInUser(res.data);
+        setToken('myToken', res.data.token);
+        console.log(res, token);
+      })
+      .catch((err) => {
+        alert('Sorry, could not login. Please check your account');
+        console.log(err);
+      });
   };
 
   return (

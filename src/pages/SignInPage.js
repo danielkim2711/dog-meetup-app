@@ -3,10 +3,18 @@ import React from 'react';
 // Components
 import SignIn from '../components/SignIn';
 
-const SignInPage = ({ setUserId }) => {
+const SignInPage = ({
+  loadedLoggedInUser,
+  setloadedLoggedInUser,
+  setLoadedProfile,
+}) => {
   return (
     <div className='form__container signInForm'>
-      <SignIn setUserId={setUserId} />
+      <SignIn
+        loadedLoggedInUser={loadedLoggedInUser}
+        setloadedLoggedInUser={setloadedLoggedInUser}
+        setLoadedProfile={setLoadedProfile}
+      />
     </div>
   );
 };

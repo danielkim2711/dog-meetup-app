@@ -19,13 +19,15 @@ import Footer from './components/Footer';
 
 function App() {
   const cookies = new Cookies();
-  const [userId, setUserId] = useState();
-  const [username, setUsername] = useState();
+  const [loadedLoggedInUser, setloadedLoggedInUser] = useState([]);
+  const [loadedProfile, setLoadedProfile] = useState([]);
 
   return (
     <CookiesProvider>
       <Router>
-        <Header username={username} />
+        {console.log('Loaded Profile :', loadedProfile)}
+        {console.log('Logged In User', loadedLoggedInUser)}
+        <Header username={loadedProfile.first_name} />
         <Route
           path='/'
           exact
@@ -33,7 +35,7 @@ function App() {
             cookies.get('myToken') === undefined ? (
               <HomePage />
             ) : (
-              <ActivityPage userId={userId} setUsername={setUsername} />
+              <ActivityPage loadedProfile={loadedProfile} />
             )
           }
         />
@@ -42,7 +44,13 @@ function App() {
         <Route path='/register' component={RegisterPage} />
         <Route
           path='/signin'
-          component={() => <SignInPage setUserId={setUserId} />}
+          component={() => (
+            <SignInPage
+              loadedLoggedInUser={loadedLoggedInUser}
+              setloadedLoggedInUser={setloadedLoggedInUser}
+              setLoadedProfile={setLoadedProfile}
+            />
+          )}
         />
         <Route path='/profile' component={ProfilePage} />
         <Route path='/dogs' component={DogsPage} />

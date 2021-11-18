@@ -2,37 +2,41 @@ import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 
-const ActivityPage = ({ userId, setUsername }) => {
+// Components
+import Activities from '../components/Activities';
+
+const ActivityPage = ({ loadedProfile }) => {
   const [token, setToken, removeToken] = useCookies(['myToken']);
 
-  const [image, setImage] = useState();
+  const [loadedActivities, setLoadedActivities] = useState([]);
 
   useEffect(() => {
-    fetchUsername(userId);
-  }, [token]);
+    fetchActivities();
+  }, []);
 
-  const fetchUsername = (userId) => {
+  const fetchActivities = () => {
     axios
-      .get(`http://127.0.0.1:8000/api/profiles/${userId}`, {
+      .get('http://127.0.0.1:8000/api/activities/', {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },
       })
       .then((res) => {
-        setUsername(res.data.first_name);
-        setImage(res.data.picture.url);
+        setLoadedActivities(res.data);
         console.log(res);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
   };
 
   return (
-    <div>
-      <h1>Activities List</h1>
-      <img src={image} />
-    </div>
+    <section className='activity__section'>
+      <h1>Available Activities</h1>
+      {loadedActivities.length !== 0 ? (
+        <Activities loadedActivities={loadedActivities} />
+      ) : (
+        <h1>There are currently no available activities</h1>
+      )}
+    </section>
   );
 };
 
