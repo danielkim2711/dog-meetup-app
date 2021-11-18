@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Components
 import ActivityItem from './ActivityItem';
 
 const Activities = ({ loadedActivities }) => {

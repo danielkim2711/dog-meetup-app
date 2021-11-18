@@ -52,8 +52,19 @@ function App() {
             />
           )}
         />
-        <Route path='/profile' component={ProfilePage} />
-        <Route path='/dogs' component={DogsPage} />
+        <Route
+          path='/profile'
+          component={() => (
+            <ProfilePage
+              loadedLoggedInUser={loadedLoggedInUser}
+              loadedProfile={loadedProfile}
+            />
+          )}
+        />
+        <Route
+          path='/dogs'
+          component={() => <DogsPage loadedLoggedInUser={loadedLoggedInUser} />}
+        />
         <Route path='/activities' component={MyActivitiesPage} />
         <Footer />
       </Router>
