@@ -8,11 +8,10 @@ const ActivityItem = ({ title, description, created, user }) => {
           <h3>{title}</h3>
           <p>{description}</p>
           <p>{created}</p>
-          <p>{`Created by: ${user}`}</p>
+          <p>{`Joined Users: ${user}`}</p>
         </div>
         <div className='activity__actions'>
-          <button>Update</button>
-          <button>Delete</button>
+          <button>Join</button>
         </div>
       </div>
     </li>

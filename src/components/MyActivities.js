@@ -60,12 +60,12 @@ const MyActivities = ({
   return (
     <li className='activity__item'>
       <div className='activity__card'>
-        <div className={isUpdating ? 'test' : 'activity__content'}>
+        <div className={isUpdating ? 'hide' : 'activity__content'}>
           <h1>{title}</h1>
           <p>{description}</p>
           <p>{`Created at: ${created}`}</p>
         </div>
-        <div className={isUpdating || 'test'}>
+        <div className={isUpdating || 'hide'}>
           <form className='form' onSubmit={handleSubmit}>
             <h1 className='form__title'>Activities</h1>
             <div className='control'>
@@ -85,11 +85,11 @@ const MyActivities = ({
               <button>Submit</button>
             </div>
           </form>
-          <div className='actions'>
+          <div className='actions actions--center'>
             <button onClick={() => setIsUpdating(false)}>Cancel</button>
           </div>
         </div>
-        <div className={isUpdating ? 'test' : 'activity__actions'}>
+        <div className={isUpdating ? 'hide' : 'activity__actions'}>
           <button onClick={() => setIsUpdating(true)}>Update</button>
           <button onClick={deleteActivity}>Delete</button>
         </div>

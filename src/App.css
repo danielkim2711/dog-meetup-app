@@ -18,6 +18,10 @@ body {
   margin: 0;
 }
 
+.hide {
+  display: none;
+}
+
 /* Header */
 
 .remove-underline {
@@ -304,6 +308,10 @@ body {
   border-color: #a50e48;
 }
 
+.actions--center {
+  text-align: center;
+}
+
 /* Activities */
 
 .activity__section {
@@ -412,10 +420,4 @@ body {
   color: var(--color-black);
   padding: 0.5rem;
   text-align: center;
-}
-
-/* Test */
-
-.test {
-  display: none;
 }

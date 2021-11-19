@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 
@@ -41,6 +42,9 @@ const DogsPage = ({ loadedLoggedInUser }) => {
       ) : (
         <h1>There are currently no registered dogs yet!</h1>
       )}
+      <Link to='/newdogs' className='nav__link remove-underline'>
+        <div className='floating-button'>+</div>
+      </Link>
     </section>
   );
 };

@@ -14,6 +14,7 @@ import SignInPage from './pages/SignInPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import DogsPage from './pages/DogsPage';
+import NewDogsPage from './pages/NewDogsPage';
 import MyActivitiesPage from './pages/MyActivitiesPage';
 import NewActivityPage from './pages/NewActivityPage';
 import Footer from './components/Footer';
@@ -65,6 +66,12 @@ function App() {
         <Route
           path='/dogs'
           component={() => <DogsPage loadedLoggedInUser={loadedLoggedInUser} />}
+        />
+        <Route
+          path='/newdogs'
+          component={() => (
+            <NewDogsPage loadedLoggedInUser={loadedLoggedInUser} />
+          )}
         />
         <Route
           path='/activities'
