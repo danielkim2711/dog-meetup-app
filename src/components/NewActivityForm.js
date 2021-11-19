@@ -23,8 +23,6 @@ const NewActivityForm = ({ loadedLoggedInUser }) => {
       user: loadedLoggedInUser.user_id,
     };
 
-    console.log('Activity Data :', activityData);
-
     axios
       .post('http://127.0.0.1:8000/api/activities/', activityData, {
         headers: {

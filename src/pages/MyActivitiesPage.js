@@ -38,7 +38,10 @@ const MyActivitiesPage = ({ loadedLoggedInUser }) => {
     <section className='activity__section'>
       <h1>My Activities</h1>
       {activitiesList.length !== 0 ? (
-        <MyActivitiesList activitiesList={activitiesList} />
+        <MyActivitiesList
+          activitiesList={activitiesList}
+          loadedLoggedInUser={loadedLoggedInUser}
+        />
       ) : (
         <div>
           <h1>You haven't posted any activities yet</h1>

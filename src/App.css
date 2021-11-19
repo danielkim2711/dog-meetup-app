@@ -316,6 +316,16 @@ body {
   height: 100vh;
 }
 
+.activity__section--flex-center {
+  background: url(./images/test4.jpg) no-repeat center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .activity__list {
   list-style: none;
   margin: 0;
@@ -402,4 +412,10 @@ body {
   color: var(--color-black);
   padding: 0.5rem;
   text-align: center;
+}
+
+/* Test */
+
+.test {
+  display: none;
 }

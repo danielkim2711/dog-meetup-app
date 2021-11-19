@@ -3,7 +3,7 @@ import React from 'react';
 // Components
 import MyActivities from './MyActivities';
 
-const MyActivitiesList = ({ activitiesList }) => {
+const MyActivitiesList = ({ activitiesList, loadedLoggedInUser }) => {
   return (
     <ul className='activity__list'>
       {activitiesList.map((activities) => (
@@ -13,6 +13,7 @@ const MyActivitiesList = ({ activitiesList }) => {
           title={activities.title}
           description={activities.description}
           created={activities.created}
+          loadedLoggedInUser={loadedLoggedInUser}
         />
       ))}
     </ul>
