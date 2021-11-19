@@ -38,7 +38,7 @@ const DogsPage = ({ loadedLoggedInUser }) => {
     <section className='activity__section'>
       <h1>My Dogs</h1>
       {dogsList.length !== 0 ? (
-        <DogsList dogsList={dogsList} />
+        <DogsList dogsList={dogsList} loadedLoggedInUser={loadedLoggedInUser} />
       ) : (
         <h1>There are currently no registered dogs yet!</h1>
       )}

@@ -15,7 +15,7 @@ const MyActivities = ({
   const titleInputRef = useRef();
   const descriptionInputRef = useRef();
 
-  const [token, setToken, removeToken] = useCookies(['myToken']);
+  const [token] = useCookies(['myToken']);
   const [isUpdating, setIsUpdating] = useState(false);
 
   const deleteActivity = () => {
