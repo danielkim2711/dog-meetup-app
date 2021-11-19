@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 
@@ -39,8 +40,13 @@ const MyActivitiesPage = ({ loadedLoggedInUser }) => {
       {activitiesList.length !== 0 ? (
         <MyActivitiesList activitiesList={activitiesList} />
       ) : (
-        <h1>You haven't posted any activities yet</h1>
+        <div>
+          <h1>You haven't posted any activities yet</h1>
+        </div>
       )}
+      <Link to='/newactivities' className='nav__link remove-underline'>
+        <div className='floating-button'>+</div>
+      </Link>
     </section>
   );
 };

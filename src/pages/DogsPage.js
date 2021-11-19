@@ -6,7 +6,7 @@ import axios from 'axios';
 import DogsList from '../components/DogsList';
 
 const DogsPage = ({ loadedLoggedInUser }) => {
-  const [token, setToken, removeToken] = useCookies(['myToken']);
+  const [token] = useCookies(['myToken']);
 
   const [dogsList, setDogsList] = useState([]);
 

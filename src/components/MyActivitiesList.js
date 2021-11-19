@@ -9,6 +9,7 @@ const MyActivitiesList = ({ activitiesList }) => {
       {activitiesList.map((activities) => (
         <MyActivities
           key={activities.id}
+          activityId={activities.id}
           title={activities.title}
           description={activities.description}
           created={activities.created}

@@ -15,6 +15,7 @@ import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import DogsPage from './pages/DogsPage';
 import MyActivitiesPage from './pages/MyActivitiesPage';
+import NewActivityPage from './pages/NewActivityPage';
 import Footer from './components/Footer';
 
 function App() {
@@ -69,6 +70,12 @@ function App() {
           path='/activities'
           component={() => (
             <MyActivitiesPage loadedLoggedInUser={loadedLoggedInUser} />
+          )}
+        />
+        <Route
+          path='/newactivities'
+          component={() => (
+            <NewActivityPage loadedLoggedInUser={loadedLoggedInUser} />
           )}
         />
         <Footer />
