@@ -45,7 +45,7 @@ const NewDogsForm = ({ loadedLoggedInUser }) => {
   return (
     <div className='form__card'>
       <form className='form' onSubmit={handleSubmit}>
-        <h1 className='form__title'>Dogs</h1>
+        <h1 className='form__title'>Add New Dog</h1>
         <div className='control'>
           <label htmlFor='name'>Dog Name</label>
           <input type='text' required id='name' ref={dogNameInputRef} />

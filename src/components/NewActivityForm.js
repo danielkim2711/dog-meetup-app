@@ -38,7 +38,7 @@ const NewActivityForm = ({ loadedLoggedInUser }) => {
   return (
     <div className='form__card'>
       <form className='form' onSubmit={handleSubmit}>
-        <h1 className='form__title'>Activities</h1>
+        <h1 className='form__title'>Create New Activity</h1>
         <div className='control'>
           <label htmlFor='title'>Title</label>
           <input type='text' required id='title' ref={titleInputRef} />

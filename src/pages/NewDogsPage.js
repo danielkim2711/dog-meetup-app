@@ -9,7 +9,6 @@ const NewDogsPage = ({ loadedLoggedInUser }) => {
 
   return (
     <section className='activity__section--flex-center'>
-      <h1>Create New Dog</h1>
       {cookies.get('myToken') === undefined ? (
         <h1>Please sign in to add new dog</h1>
       ) : (
