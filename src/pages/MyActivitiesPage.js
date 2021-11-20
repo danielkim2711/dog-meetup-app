@@ -7,7 +7,7 @@ import axios from 'axios';
 import MyActivitiesList from '../components/MyActivitiesList';
 
 const MyActivitiesPage = ({ loadedLoggedInUser }) => {
-  const [token, setToken, removeToken] = useCookies(['myToken']);
+  const [token] = useCookies(['myToken']);
 
   const [activitiesList, setActivitiesList] = useState([]);
 
@@ -35,7 +35,7 @@ const MyActivitiesPage = ({ loadedLoggedInUser }) => {
   };
 
   return (
-    <section className='activity__section'>
+    <section className='my_activities__section'>
       <h1>My Activities</h1>
       {activitiesList.length !== 0 ? (
         <MyActivitiesList

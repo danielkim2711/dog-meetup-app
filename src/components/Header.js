@@ -9,18 +9,12 @@ const Header = ({ username }) => {
 
   return (
     <div className='header'>
-      <Link to='/' className='header__title remove-underline'>
-        <p>Meetcha Dogs</p>
+      <Link to='/' className='remove-underline'>
+        <h1 className='header__title'>Meetcha Dogs</h1>
       </Link>
       <ul className='nav'>
         <Link to='/' className='nav__link remove-underline'>
           <li>HOME</li>
-        </Link>
-        <Link to='/about' className='nav__link remove-underline'>
-          <li>ABOUT</li>
-        </Link>
-        <Link to='/contact' className='nav__link remove-underline'>
-          <li>CONTACT</li>
         </Link>
         {cookies.get('myToken') === undefined ? (
           <Link to='/signin' className='nav__link remove-underline'>

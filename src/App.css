@@ -39,8 +39,9 @@ body {
 }
 
 .header__title {
-  color: var(--color-black);
+  color: var(--color-white);
   font-size: 1.5rem;
+  text-shadow: 1px 1px 5px var(--color-black);
 }
 
 .header a:visited {
@@ -67,8 +68,8 @@ body {
 /* Dropdown Button */
 
 .dropbtn {
-  background-color: var(--color-black);
-  border-radius: 3px;
+  background-color: #aaa;
+  border-radius: 50%;
   border: none;
   color: var(--color-white);
   cursor: pointer;
@@ -122,7 +123,6 @@ body {
 
 .showcase__container {
   height: 100%;
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -148,13 +148,14 @@ body {
 
 .card p {
   color: var(--color-light-grey);
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.75;
 }
 
 .card__container {
   padding: 3rem;
   width: 100%;
+  height: 450px;
 }
 
 .card__fast {
@@ -179,38 +180,6 @@ body {
 
 .card__reliable p {
   width: 25ch;
-}
-
-/* Button */
-
-.btn {
-  background-color: var(--color-light-white);
-  border-radius: 25px;
-  border: none;
-  font-size: 1rem;
-  margin: 1rem 0;
-  margin-top: 4rem;
-  padding: 1rem;
-  width: 150px;
-}
-
-.btn:hover {
-  background-color: transparent;
-  border: 2px solid var(--color-light-white);
-  color: var(--color-light-white);
-  cursor: pointer;
-}
-
-.btn__fast {
-  color: var(--bright-orange);
-}
-
-.btn__easy {
-  color: var(--bright-green);
-}
-
-.btn__reliable {
-  color: var(--dark-sky-blue);
 }
 
 /* Form */
@@ -315,7 +284,7 @@ body {
 /* Activities */
 
 .activity__section {
-  background: url(./images/test4.jpg) no-repeat center;
+  background: url(./images/activity.jpg) no-repeat center;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -325,13 +294,68 @@ body {
 }
 
 .activity__section--flex-center {
-  background: url(./images/test4.jpg) no-repeat center;
+  background: url(./images/activity.jpg) no-repeat center;
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.activity__section h1 {
+  color: var(--color-white);
+  text-shadow: 1px 1px 5px var(--color-black);
+}
+
+.dogs__section {
+  background: url(./images/dogs.jpg) no-repeat center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+}
+
+.dogs__section--flex-center {
+  background: url(./images/dogs.jpg) no-repeat center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.dogs__section h1 {
+  color: var(--color-white);
+  text-shadow: 1px 1px 5px var(--color-black);
+}
+
+.my_activities__section {
+  background: url(./images/my-activity.jpg) no-repeat center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+}
+
+.my_activities__section--flex-center {
+  background: url(./images/my-activity.jpg) no-repeat center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.my_activities__section h1 {
+  color: var(--color-white);
+  text-shadow: 1px 1px 5px var(--color-black);
 }
 
 .activity__list {
@@ -401,7 +425,7 @@ body {
   position: absolute;
   bottom: -40px;
   right: 26px;
-  background: #f68657;
+  background: var(--color-white);
   border: none;
   width: 70px;
   height: 70px;
@@ -416,13 +440,18 @@ body {
 /* Profile */
 
 .profile__section {
-  background: url(./images/test4.jpg) no-repeat center;
+  background: url(./images/profile.jpg) no-repeat center;
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.profile__section h1 {
+  color: var(--color-white);
+  text-shadow: 1px 1px 5px var(--color-black);
 }
 
 .profile__list {

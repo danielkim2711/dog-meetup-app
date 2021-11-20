@@ -5,8 +5,8 @@ import axios from 'axios';
 // Components
 import Activities from '../components/Activities';
 
-const ActivityPage = ({ loadedProfile }) => {
-  const [token, setToken, removeToken] = useCookies(['myToken']);
+const ActivityPage = ({ loadedLoggedInUser }) => {
+  const [token] = useCookies(['myToken']);
 
   const [loadedActivities, setLoadedActivities] = useState([]);
 
@@ -32,7 +32,10 @@ const ActivityPage = ({ loadedProfile }) => {
     <section className='activity__section'>
       <h1>Available Activities Right Now!</h1>
       {loadedActivities.length !== 0 ? (
-        <Activities loadedActivities={loadedActivities} />
+        <Activities
+          loadedActivities={loadedActivities}
+          loadedLoggedInUser={loadedLoggedInUser}
+        />
       ) : (
         <h1>There are currently no available activities</h1>
       )}

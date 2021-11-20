@@ -12,6 +12,7 @@ const MyActivitiesList = ({ activitiesList, loadedLoggedInUser }) => {
           activityId={activities.id}
           title={activities.title}
           description={activities.description}
+          location={activities.location}
           created={activities.created}
           loadedLoggedInUser={loadedLoggedInUser}
         />

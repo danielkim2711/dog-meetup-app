@@ -7,6 +7,7 @@ const MyActivities = ({
   activityId,
   title,
   description,
+  location,
   created,
   loadedLoggedInUser,
 }) => {
@@ -14,9 +15,14 @@ const MyActivities = ({
 
   const titleInputRef = useRef();
   const descriptionInputRef = useRef();
+  const locationInputRef = useRef();
 
   const [token] = useCookies(['myToken']);
   const [isUpdating, setIsUpdating] = useState(false);
+
+  const getDate = (activity) => {
+    return new Date(activity).toLocaleString();
+  };
 
   const deleteActivity = () => {
     axios
@@ -35,10 +41,12 @@ const MyActivities = ({
 
     const enteredTitle = titleInputRef.current.value;
     const enteredDescriotion = descriptionInputRef.current.value;
+    const enteredLocation = locationInputRef.current.value;
 
     const activityData = {
       title: enteredTitle,
       description: enteredDescriotion,
+      location: enteredLocation,
       user: loadedLoggedInUser.user_id,
     };
 
@@ -61,13 +69,14 @@ const MyActivities = ({
     <li className='activity__item'>
       <div className='activity__card'>
         <div className={isUpdating ? 'hide' : 'activity__content'}>
-          <h1>{title}</h1>
+          <h3>{title}</h3>
           <p>{description}</p>
-          <p>{`Created at: ${created}`}</p>
+          <p>{`Location: ${location}`}</p>
+          <p>{`Created at: ${getDate(created)}`}</p>
         </div>
         <div className={isUpdating || 'hide'}>
           <form className='form' onSubmit={handleSubmit}>
-            <h1 className='form__title'>Activities</h1>
+            <h3 className='form__title'>Activities</h3>
             <div className='control'>
               <label htmlFor='title'>Title</label>
               <input type='text' required id='title' ref={titleInputRef} />
@@ -80,6 +89,15 @@ const MyActivities = ({
                 rows='10'
                 ref={descriptionInputRef}
               ></textarea>
+            </div>
+            <div className='control'>
+              <label htmlFor='location'>Location</label>
+              <input
+                type='text'
+                required
+                id='location'
+                ref={locationInputRef}
+              />
             </div>
             <div className='actions'>
               <button>Submit</button>

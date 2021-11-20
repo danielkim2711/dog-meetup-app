@@ -35,7 +35,7 @@ const DogsPage = ({ loadedLoggedInUser }) => {
   };
 
   return (
-    <section className='activity__section'>
+    <section className='dogs__section'>
       <h1>My Dogs</h1>
       {dogsList.length !== 0 ? (
         <DogsList dogsList={dogsList} loadedLoggedInUser={loadedLoggedInUser} />

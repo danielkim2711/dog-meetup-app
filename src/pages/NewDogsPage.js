@@ -8,7 +8,7 @@ const NewDogsPage = ({ loadedLoggedInUser }) => {
   const cookies = new Cookies();
 
   return (
-    <section className='activity__section--flex-center'>
+    <section className='dogs__section--flex-center'>
       {cookies.get('myToken') === undefined ? (
         <h1>Please sign in to add new dog</h1>
       ) : (

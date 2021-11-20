@@ -7,8 +7,6 @@ import Cookies from 'universal-cookie';
 import './App.css';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
 import ActivityPage from './pages/ActivityPage';
 import SignInPage from './pages/SignInPage';
 import RegisterPage from './pages/RegisterPage';
@@ -37,12 +35,10 @@ function App() {
             cookies.get('myToken') === undefined ? (
               <HomePage />
             ) : (
-              <ActivityPage loadedProfile={loadedProfile} />
+              <ActivityPage loadedLoggedInUser={loadedLoggedInUser} />
             )
           }
         />
-        <Route path='/about' component={AboutPage} />
-        <Route path='/contact' component={ContactPage} />
         <Route path='/register' component={RegisterPage} />
         <Route
           path='/signin'

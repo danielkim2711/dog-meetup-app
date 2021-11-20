@@ -8,7 +8,7 @@ const NewActivityPage = ({ loadedLoggedInUser }) => {
   const cookies = new Cookies();
 
   return (
-    <section className='activity__section--flex-center'>
+    <section className='my_activities__section--flex-center'>
       {cookies.get('myToken') === undefined ? (
         <h1>Please sign in to add new activity</h1>
       ) : (

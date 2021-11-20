@@ -8,6 +8,7 @@ const NewActivityForm = ({ loadedLoggedInUser }) => {
 
   const titleInputRef = useRef();
   const descriptionInputRef = useRef();
+  const locationInputRef = useRef();
 
   const [token] = useCookies(['myToken']);
 
@@ -16,10 +17,12 @@ const NewActivityForm = ({ loadedLoggedInUser }) => {
 
     const enteredTitle = titleInputRef.current.value;
     const enteredDescriotion = descriptionInputRef.current.value;
+    const enteredLocation = locationInputRef.current.value;
 
     const activityData = {
       title: enteredTitle,
       description: enteredDescriotion,
+      location: enteredLocation,
       user: loadedLoggedInUser.user_id,
     };
 
@@ -51,6 +54,10 @@ const NewActivityForm = ({ loadedLoggedInUser }) => {
             rows='10'
             ref={descriptionInputRef}
           ></textarea>
+        </div>
+        <div className='control'>
+          <label htmlFor='location'>Location</label>
+          <input type='text' required id='location' ref={locationInputRef} />
         </div>
         <div className='actions'>
           <button>Submit</button>
