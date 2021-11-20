@@ -11,7 +11,7 @@ const NewActivityPage = ({ loadedLoggedInUser }) => {
     <section className='activity__section--flex-center'>
       <h1>Create New Activity</h1>
       {cookies.get('myToken') === undefined ? (
-        <h1>You are not allowed</h1>
+        <h1>Please sign in to add new activity</h1>
       ) : (
         <NewActivityForm loadedLoggedInUser={loadedLoggedInUser} />
       )}

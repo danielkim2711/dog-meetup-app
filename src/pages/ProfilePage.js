@@ -1,17 +1,24 @@
 import React from 'react';
+import Cookies from 'universal-cookie';
 
 // Components
 import Profile from '../components/Profile';
 
 const ProfilePage = ({ loadedLoggedInUser, loadedProfile }) => {
+  const cookies = new Cookies();
+
   return (
-    <div>
+    <section className='profile__section'>
       <h1>My Profile</h1>
-      <Profile
-        loadedLoggedInUser={loadedLoggedInUser}
-        loadedProfile={loadedProfile}
-      />
-    </div>
+      {cookies.get('myToken') === undefined ? (
+        <h1>Please sign in to edit your profile</h1>
+      ) : (
+        <Profile
+          loadedLoggedInUser={loadedLoggedInUser}
+          loadedProfile={loadedProfile}
+        />
+      )}
+    </section>
   );
 };
 

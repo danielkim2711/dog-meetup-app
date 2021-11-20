@@ -30,7 +30,7 @@ const ActivityPage = ({ loadedProfile }) => {
 
   return (
     <section className='activity__section'>
-      <h1>Available Activities</h1>
+      <h1>Available Activities Right Now!</h1>
       {loadedActivities.length !== 0 ? (
         <Activities loadedActivities={loadedActivities} />
       ) : (
