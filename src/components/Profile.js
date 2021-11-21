@@ -105,12 +105,14 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
       )
       .then((res) => {
         console.log(res);
+        removeToken(['myToken']);
+        history.push('/');
+        alert('Account updated successfully. Please log in again.');
       })
       .catch((err) => {
         alert('Sorry, there was a problem. Please try again later');
         console.log(err);
       });
-    history.push('/');
   };
 
   return (
@@ -121,8 +123,8 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
             <img
               className='profile__image'
               src={
-                loadedProfile.picture === null
-                  ? 'https://res.cloudinary.com/dluiyrdmg/image/upload/v1637453115/default_tbqndi.png'
+                loadedProfile.picture === null || loadedProfile.picture === ''
+                  ? 'https://res.cloudinary.com/dluiyrdmg/image/upload/v1637478121/default-user_mgpig6.jpg'
                   : loadedProfile.picture
               }
               alt='User Profile'

@@ -84,8 +84,8 @@ const ActivityItem = ({
             <img
               className='dropdown-image'
               src={
-                authorPicture === null
-                  ? 'https://res.cloudinary.com/dluiyrdmg/image/upload/v1637453115/default_tbqndi.png'
+                authorPicture === null || authorPicture === ''
+                  ? 'https://res.cloudinary.com/dluiyrdmg/image/upload/v1637478121/default-user_mgpig6.jpg'
                   : authorPicture
               }
               alt='User Profile'

@@ -33,7 +33,7 @@ const MyActivities = ({
       })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    history.push('/');
+    history.go(0);
   };
 
   const handleSubmit = (e) => {
@@ -62,7 +62,7 @@ const MyActivities = ({
       )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    history.push('/');
+    history.go(0);
   };
 
   return (

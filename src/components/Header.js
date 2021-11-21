@@ -38,8 +38,8 @@ const Header = ({ picture }) => {
             <img
               className='dropdown-image'
               src={
-                picture === null
-                  ? 'https://res.cloudinary.com/dluiyrdmg/image/upload/v1637453115/default_tbqndi.png'
+                picture === null || picture === ''
+                  ? 'https://res.cloudinary.com/dluiyrdmg/image/upload/v1637478121/default-user_mgpig6.jpg'
                   : picture
               }
               alt='User Profile'

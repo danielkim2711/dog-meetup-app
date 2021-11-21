@@ -41,7 +41,7 @@ const Dogs = ({ dogId, picture, name, breed, gender, loadedLoggedInUser }) => {
       })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    history.push('/');
+    history.go(0);
   };
 
   const handleSubmit = (e) => {
@@ -68,7 +68,7 @@ const Dogs = ({ dogId, picture, name, breed, gender, loadedLoggedInUser }) => {
       })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    history.push('/');
+    history.go(0);
   };
 
   return (
@@ -78,7 +78,7 @@ const Dogs = ({ dogId, picture, name, breed, gender, loadedLoggedInUser }) => {
           <img
             className='dogs__image'
             src={
-              picture === null
+              picture === null || picture === ''
                 ? 'https://res.cloudinary.com/dluiyrdmg/image/upload/v1637454237/default-dog_jiq6mx.png'
                 : picture
             }

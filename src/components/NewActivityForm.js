@@ -37,7 +37,7 @@ const NewActivityForm = ({ loadedLoggedInUser }) => {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
 
-    history.replace('/activities');
+    history.push('/activities');
   };
 
   return (

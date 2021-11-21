@@ -481,12 +481,11 @@ body {
 }
 
 .profile__image {
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  border-radius: 50%;
   overflow: hidden;
   height: 150px;
   width: 150px;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
 }
 
 .profile__image__content {
