@@ -27,7 +27,7 @@ function App() {
       <Router>
         {console.log('Loaded Profile :', loadedProfile)}
         {console.log('Logged In User', loadedLoggedInUser)}
-        <Header username={loadedProfile.first_name} />
+        <Header picture={loadedProfile.picture} />
         <Route
           path='/'
           exact

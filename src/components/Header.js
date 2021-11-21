@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import Cookies from 'universal-cookie';
 
-const Header = ({ username }) => {
+const Header = ({ picture }) => {
   const cookies = new Cookies();
   const [token, setToken, removeToken] = useCookies(['myToken']);
 
@@ -35,7 +35,14 @@ const Header = ({ username }) => {
           </Link>
         ) : (
           <div className='dropdown'>
-            <button className='dropbtn'>{username}</button>
+            <img
+              className='dropdown-image'
+              src={
+                picture === null
+                  ? 'https://res.cloudinary.com/dluiyrdmg/image/upload/v1637453115/default_tbqndi.png'
+                  : picture
+              }
+            />
             <div className='dropdown-content'>
               <Link to='/profile' className='remove-underline'>
                 <li>Profile</li>

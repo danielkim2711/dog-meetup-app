@@ -12,6 +12,7 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
   const [token, setToken, removeToken] = useCookies(['myToken']);
   const [isUpdating, setIsUpdating] = useState(false);
 
+  const [image, setImage] = useState('');
   const firstNameInputRef = useRef();
   const lastNameInputRef = useRef();
   const [gender, setGender] = useState();
@@ -20,6 +21,21 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
 
   const handleGender = (e) => {
     setGender(e.currentTarget.value);
+  };
+
+  const uploadImage = (e) => {
+    const files = e.target.files[0];
+    const formData = new FormData();
+    formData.append('upload_preset', 'ml_default');
+    formData.append('file', files);
+
+    axios
+      .post('https://api.cloudinary.com/v1_1/dluiyrdmg/image/upload', formData)
+      .then((res) => {
+        console.log(res);
+        setImage(res.data.secure_url);
+      })
+      .catch((err) => console.log(err));
   };
 
   const deleteAccount = () => {
@@ -44,6 +60,7 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const enteredPicture = image;
     const enteredFirstName = firstNameInputRef.current.value;
     const enteredLastName = lastNameInputRef.current.value;
     const enteredGender = gender;
@@ -51,6 +68,7 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
     const enteredAddress = addressInputRef.current.value;
 
     const profileDetail = {
+      picture: enteredPicture,
       first_name: enteredFirstName,
       last_name: enteredLastName,
       gender: enteredGender,
@@ -100,7 +118,15 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
       <li className='profile__item'>
         <div className='profile__card'>
           <div className={isUpdating ? 'hide' : 'profile__content'}>
-            <img src={loadedProfile.picture} alt='Test' />
+            <img
+              className='profile__image'
+              src={
+                loadedProfile.picture === null
+                  ? 'https://res.cloudinary.com/dluiyrdmg/image/upload/v1637453115/default_tbqndi.png'
+                  : loadedProfile.picture
+              }
+              alt='Test'
+            />
           </div>
           <div className={isUpdating ? 'hide' : 'profile__content'}>
             <h3>Username:</h3>
@@ -129,6 +155,9 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
           <div className={isUpdating || 'hide'}>
             <form className='form' onSubmit={handleSubmit}>
               <h1 className='form__title'>Update Profile</h1>
+              <div className='control'>
+                <input type='file' name='file' onChange={uploadImage} />
+              </div>
               <div className='control'>
                 <label htmlFor='firstName'>First Name</label>
                 <input
