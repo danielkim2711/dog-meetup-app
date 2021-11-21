@@ -117,7 +117,7 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
     <ul className='profile__list'>
       <li className='profile__item'>
         <div className='profile__card'>
-          <div className={isUpdating ? 'hide' : 'profile__content'}>
+          <div className={isUpdating ? 'hide' : 'profile__image__content'}>
             <img
               className='profile__image'
               src={

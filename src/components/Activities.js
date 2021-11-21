@@ -3,7 +3,11 @@ import React from 'react';
 // Components
 import ActivityItem from './ActivityItem';
 
-const Activities = ({ loadedActivities, loadedLoggedInUser }) => {
+const Activities = ({
+  loadedActivities,
+  loadedLoggedInUser,
+  loadedProfile,
+}) => {
   return (
     <ul className='activity__list'>
       {loadedActivities.map((activity) => (
@@ -13,9 +17,9 @@ const Activities = ({ loadedActivities, loadedLoggedInUser }) => {
           description={activity.description}
           location={activity.location}
           created={activity.created}
-          numberOfUsers={activity.number_of_users}
           user={activity.user}
           loadedLoggedInUser={loadedLoggedInUser}
+          loadedProfile={loadedProfile}
         />
       ))}
     </ul>

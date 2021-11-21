@@ -35,7 +35,10 @@ function App() {
             cookies.get('myToken') === undefined ? (
               <HomePage />
             ) : (
-              <ActivityPage loadedLoggedInUser={loadedLoggedInUser} />
+              <ActivityPage
+                loadedLoggedInUser={loadedLoggedInUser}
+                loadedProfile={loadedProfile}
+              />
             )
           }
         />
