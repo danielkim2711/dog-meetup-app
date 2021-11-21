@@ -29,11 +29,15 @@ const NewActivityForm = ({ loadedLoggedInUser }) => {
     console.log('Activity Data', activityData);
 
     axios
-      .post('/api/activities/', activityData, {
-        headers: {
-          Authorization: `Token ${token['myToken']}`,
-        },
-      })
+      .post(
+        'https://dog-meetup-backend.herokuapp.com/api/activities/',
+        activityData,
+        {
+          headers: {
+            Authorization: `Token ${token['myToken']}`,
+          },
+        }
+      )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
 

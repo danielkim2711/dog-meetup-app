@@ -17,7 +17,7 @@ const MyActivitiesPage = ({ loadedLoggedInUser }) => {
 
   const fetchActivities = () => {
     axios
-      .get('/api/activities/', {
+      .get('https://dog-meetup-backend.herokuapp.com/api/activities/', {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },

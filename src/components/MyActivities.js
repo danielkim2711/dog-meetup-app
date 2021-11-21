@@ -26,11 +26,14 @@ const MyActivities = ({
 
   const deleteActivity = () => {
     axios
-      .delete(`/api/activities/${activityId}/`, {
-        headers: {
-          Authorization: `Token ${token['myToken']}`,
-        },
-      })
+      .delete(
+        `https://dog-meetup-backend.herokuapp.com/api/activities/${activityId}/`,
+        {
+          headers: {
+            Authorization: `Token ${token['myToken']}`,
+          },
+        }
+      )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     history.go(0);
@@ -51,11 +54,15 @@ const MyActivities = ({
     };
 
     axios
-      .put(`/api/activities/${activityId}/`, activityData, {
-        headers: {
-          Authorization: `Token ${token['myToken']}`,
-        },
-      })
+      .put(
+        `https://dog-meetup-backend.herokuapp.com/api/activities/${activityId}/`,
+        activityData,
+        {
+          headers: {
+            Authorization: `Token ${token['myToken']}`,
+          },
+        }
+      )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     history.go(0);

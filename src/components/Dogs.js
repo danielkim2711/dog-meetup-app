@@ -34,7 +34,7 @@ const Dogs = ({ dogId, picture, name, breed, gender, loadedLoggedInUser }) => {
 
   const deleteDog = () => {
     axios
-      .delete(`/api/dogs/${dogId}/`, {
+      .delete(`https://dog-meetup-backend.herokuapp.com/api/dogs/${dogId}/`, {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },
@@ -61,11 +61,15 @@ const Dogs = ({ dogId, picture, name, breed, gender, loadedLoggedInUser }) => {
     };
 
     axios
-      .put(`/api/dogs/${dogId}/`, dogData, {
-        headers: {
-          Authorization: `Token ${token['myToken']}`,
-        },
-      })
+      .put(
+        `https://dog-meetup-backend.herokuapp.com/api/dogs/${dogId}/`,
+        dogData,
+        {
+          headers: {
+            Authorization: `Token ${token['myToken']}`,
+          },
+        }
+      )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     history.go(0);

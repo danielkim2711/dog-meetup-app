@@ -51,7 +51,7 @@ const ActivityItem = ({
 
   const getUser = () => {
     axios
-      .get(`/api/profiles/${user}/`, {
+      .get(`https://dog-meetup-backend.herokuapp.com/api/profiles/${user}/`, {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },

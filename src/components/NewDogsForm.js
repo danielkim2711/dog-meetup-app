@@ -31,7 +31,7 @@ const NewDogsForm = ({ loadedLoggedInUser }) => {
     };
 
     axios
-      .post('/api/dogs/', dogData, {
+      .post('https://dog-meetup-backend.herokuapp.com/api/dogs/', dogData, {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },

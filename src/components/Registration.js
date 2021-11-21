@@ -23,7 +23,7 @@ const Registration = () => {
   // Use async await fetch AJAX
 
   // const createUserDetail = async (userDetail) => {
-  //   await fetch('/api/users/', {
+  //   await fetch('https://dog-meetup-backend.herokuapp.com/api/users/', {
   //     method: 'POST',
   //     headers: {
   //       'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const Registration = () => {
     };
 
     await axios
-      .post('/api/users/', userLogin)
+      .post('https://dog-meetup-backend.herokuapp.com/api/users/', userLogin)
       .then((res) => {
         enteredUser = res.data.id;
         console.log(res, enteredUser);
@@ -87,7 +87,10 @@ const Registration = () => {
     setErrorMessage();
 
     axios
-      .post('/api/profiles/', userDetail)
+      .post(
+        'https://dog-meetup-backend.herokuapp.com/api/profiles/',
+        userDetail
+      )
       .then((res) => {
         alert('Thank You. Your account created successfully.');
         console.log(res);

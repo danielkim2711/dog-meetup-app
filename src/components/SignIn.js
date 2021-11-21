@@ -22,11 +22,14 @@ const SignIn = ({
 
   const fetchUserProfile = () => {
     axios
-      .get(`/api/profiles/${loadedLoggedInUser.user_id}`, {
-        headers: {
-          Authorization: `Token ${token['myToken']}`,
-        },
-      })
+      .get(
+        `https://dog-meetup-backend.herokuapp.com/api/profiles/${loadedLoggedInUser.user_id}`,
+        {
+          headers: {
+            Authorization: `Token ${token['myToken']}`,
+          },
+        }
+      )
       .then((res) => {
         setLoadedProfile(res.data);
         console.log('Fetched Profile', res);
@@ -48,7 +51,7 @@ const SignIn = ({
     };
 
     await axios
-      .post('/auth/', userLogin)
+      .post('https://dog-meetup-backend.herokuapp.com/auth/', userLogin)
       .then((res) => {
         setloadedLoggedInUser(res.data);
         setToken('myToken', res.data.token);

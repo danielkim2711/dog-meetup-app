@@ -17,7 +17,7 @@ const DogsPage = ({ loadedLoggedInUser }) => {
 
   const fetchDogs = () => {
     axios
-      .get('/api/dogs/', {
+      .get('https://dog-meetup-backend.herokuapp.com/api/dogs/', {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },

@@ -40,11 +40,14 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
 
   const deleteAccount = () => {
     axios
-      .delete(`/api/users/${loadedLoggedInUser.user_id}/`, {
-        headers: {
-          Authorization: `Token ${token['myToken']}`,
-        },
-      })
+      .delete(
+        `https://dog-meetup-backend.herokuapp.com/api/users/${loadedLoggedInUser.user_id}/`,
+        {
+          headers: {
+            Authorization: `Token ${token['myToken']}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
         removeToken(['myToken']);
@@ -91,11 +94,15 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
     setErrorMessage();
 
     axios
-      .put(`/api/profiles/${loadedLoggedInUser.user_id}/`, profileDetail, {
-        headers: {
-          Authorization: `Token ${token['myToken']}`,
-        },
-      })
+      .put(
+        `https://dog-meetup-backend.herokuapp.com/api/profiles/${loadedLoggedInUser.user_id}/`,
+        profileDetail,
+        {
+          headers: {
+            Authorization: `Token ${token['myToken']}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
         removeToken(['myToken']);
