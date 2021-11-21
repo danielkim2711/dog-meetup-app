@@ -26,7 +26,7 @@ const MyActivities = ({
 
   const deleteActivity = () => {
     axios
-      .delete(`http://127.0.0.1:8000/api/activities/${activityId}/`, {
+      .delete(`/api/activities/${activityId}/`, {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },
@@ -51,15 +51,11 @@ const MyActivities = ({
     };
 
     axios
-      .put(
-        `http://127.0.0.1:8000/api/activities/${activityId}/`,
-        activityData,
-        {
-          headers: {
-            Authorization: `Token ${token['myToken']}`,
-          },
-        }
-      )
+      .put(`/api/activities/${activityId}/`, activityData, {
+        headers: {
+          Authorization: `Token ${token['myToken']}`,
+        },
+      })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     history.go(0);

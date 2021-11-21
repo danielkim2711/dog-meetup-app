@@ -22,7 +22,7 @@ const SignIn = ({
 
   const fetchUserProfile = () => {
     axios
-      .get(`http://127.0.0.1:8000/api/profiles/${loadedLoggedInUser.user_id}`, {
+      .get(`/api/profiles/${loadedLoggedInUser.user_id}`, {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },
@@ -48,7 +48,7 @@ const SignIn = ({
     };
 
     await axios
-      .post('http://127.0.0.1:8000/auth/', userLogin)
+      .post('/auth/', userLogin)
       .then((res) => {
         setloadedLoggedInUser(res.data);
         setToken('myToken', res.data.token);

@@ -51,7 +51,7 @@ const ActivityItem = ({
 
   const getUser = () => {
     axios
-      .get(`http://127.0.0.1:8000/api/profiles/${user}/`, {
+      .get(`/api/profiles/${user}/`, {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },

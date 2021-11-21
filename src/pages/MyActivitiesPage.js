@@ -17,7 +17,7 @@ const MyActivitiesPage = ({ loadedLoggedInUser }) => {
 
   const fetchActivities = () => {
     axios
-      .get('http://127.0.0.1:8000/api/activities/', {
+      .get('/api/activities/', {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },

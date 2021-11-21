@@ -17,7 +17,7 @@ const DogsPage = ({ loadedLoggedInUser }) => {
 
   const fetchDogs = () => {
     axios
-      .get('http://127.0.0.1:8000/api/dogs/', {
+      .get('/api/dogs/', {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },

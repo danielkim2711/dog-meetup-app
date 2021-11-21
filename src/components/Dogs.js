@@ -34,7 +34,7 @@ const Dogs = ({ dogId, picture, name, breed, gender, loadedLoggedInUser }) => {
 
   const deleteDog = () => {
     axios
-      .delete(`http://127.0.0.1:8000/api/dogs/${dogId}/`, {
+      .delete(`/api/dogs/${dogId}/`, {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },
@@ -61,7 +61,7 @@ const Dogs = ({ dogId, picture, name, breed, gender, loadedLoggedInUser }) => {
     };
 
     axios
-      .put(`http://127.0.0.1:8000/api/dogs/${dogId}/`, dogData, {
+      .put(`/api/dogs/${dogId}/`, dogData, {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },

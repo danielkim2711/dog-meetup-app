@@ -40,14 +40,11 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
 
   const deleteAccount = () => {
     axios
-      .delete(
-        `http://127.0.0.1:8000/api/users/${loadedLoggedInUser.user_id}/`,
-        {
-          headers: {
-            Authorization: `Token ${token['myToken']}`,
-          },
-        }
-      )
+      .delete(`/api/users/${loadedLoggedInUser.user_id}/`, {
+        headers: {
+          Authorization: `Token ${token['myToken']}`,
+        },
+      })
       .then((res) => {
         console.log(res);
         removeToken(['myToken']);
@@ -94,15 +91,11 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
     setErrorMessage();
 
     axios
-      .put(
-        `http://127.0.0.1:8000/api/profiles/${loadedLoggedInUser.user_id}/`,
-        profileDetail,
-        {
-          headers: {
-            Authorization: `Token ${token['myToken']}`,
-          },
-        }
-      )
+      .put(`/api/profiles/${loadedLoggedInUser.user_id}/`, profileDetail, {
+        headers: {
+          Authorization: `Token ${token['myToken']}`,
+        },
+      })
       .then((res) => {
         console.log(res);
         removeToken(['myToken']);

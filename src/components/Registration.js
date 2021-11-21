@@ -23,7 +23,7 @@ const Registration = () => {
   // Use async await fetch AJAX
 
   // const createUserDetail = async (userDetail) => {
-  //   await fetch('http://127.0.0.1:8000/api/users/', {
+  //   await fetch('/api/users/', {
   //     method: 'POST',
   //     headers: {
   //       'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const Registration = () => {
     };
 
     await axios
-      .post('http://127.0.0.1:8000/api/users/', userLogin)
+      .post('/api/users/', userLogin)
       .then((res) => {
         enteredUser = res.data.id;
         console.log(res, enteredUser);
@@ -87,7 +87,7 @@ const Registration = () => {
     setErrorMessage();
 
     axios
-      .post('http://127.0.0.1:8000/api/profiles/', userDetail)
+      .post('/api/profiles/', userDetail)
       .then((res) => {
         alert('Thank You. Your account created successfully.');
         console.log(res);

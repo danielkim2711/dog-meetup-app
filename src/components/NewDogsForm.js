@@ -31,7 +31,7 @@ const NewDogsForm = ({ loadedLoggedInUser }) => {
     };
 
     axios
-      .post('http://127.0.0.1:8000/api/dogs/', dogData, {
+      .post('/api/dogs/', dogData, {
         headers: {
           Authorization: `Token ${token['myToken']}`,
         },
