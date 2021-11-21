@@ -76,7 +76,7 @@ const MyActivities = ({
         </div>
         <div className={isUpdating || 'hide'}>
           <form className='form' onSubmit={handleSubmit}>
-            <h3 className='form__title'>Activities</h3>
+            <h2 className='form__title'>Update Activity</h2>
             <div className='control'>
               <label htmlFor='title'>Title</label>
               <input type='text' required id='title' ref={titleInputRef} />

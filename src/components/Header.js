@@ -42,6 +42,7 @@ const Header = ({ picture }) => {
                   ? 'https://res.cloudinary.com/dluiyrdmg/image/upload/v1637453115/default_tbqndi.png'
                   : picture
               }
+              alt='User Profile'
             />
             <div className='dropdown-content'>
               <Link to='/profile' className='remove-underline'>

@@ -6,6 +6,7 @@ import axios from 'axios';
 const Dogs = ({ dogId, picture, name, breed, gender, loadedLoggedInUser }) => {
   const history = useHistory();
 
+  const [dogImage, setDogImage] = useState('');
   const dogNameInputRef = useRef();
   const dogBreedInputRef = useRef();
   const [dogGender, setDogGender] = useState();
@@ -15,6 +16,20 @@ const Dogs = ({ dogId, picture, name, breed, gender, loadedLoggedInUser }) => {
 
   const handleGender = (e) => {
     setDogGender(e.currentTarget.value);
+  };
+
+  const uploadDogImage = (e) => {
+    const files = e.target.files[0];
+    const formData = new FormData();
+    formData.append('upload_preset', 'ml_default');
+    formData.append('file', files);
+
+    axios
+      .post('https://api.cloudinary.com/v1_1/dluiyrdmg/image/upload', formData)
+      .then((res) => {
+        setDogImage(res.data.secure_url);
+      })
+      .catch((err) => console.log(err));
   };
 
   const deleteDog = () => {
@@ -32,11 +47,13 @@ const Dogs = ({ dogId, picture, name, breed, gender, loadedLoggedInUser }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const enteredDogImage = dogImage;
     const enteredDogName = dogNameInputRef.current.value;
     const enteredDogBreed = dogBreedInputRef.current.value;
     const enteredDogGender = dogGender;
 
     const dogData = {
+      picture: enteredDogImage,
       name: enteredDogName,
       breed: enteredDogBreed,
       gender: enteredDogGender,
@@ -58,14 +75,25 @@ const Dogs = ({ dogId, picture, name, breed, gender, loadedLoggedInUser }) => {
     <li className='activity__item'>
       <div className='activity__card'>
         <div className={isUpdating ? 'hide' : 'activity__content'}>
-          <p>{picture}</p>
+          <img
+            className='dogs__image'
+            src={
+              picture === null
+                ? 'https://res.cloudinary.com/dluiyrdmg/image/upload/v1637454237/default-dog_jiq6mx.png'
+                : picture
+            }
+            alt='Dog'
+          />
           <p>{`Name: ${name}`}</p>
           <p>{`Breed: ${breed}`}</p>
           <p>{`Gender: ${gender === 'M' ? 'Male' : 'Female'}`}</p>
         </div>
         <div className={isUpdating || 'hide'}>
           <form className='form' onSubmit={handleSubmit}>
-            <h1 className='form__title'>Dogs</h1>
+            <h2 className='form__title'>Update Dogs</h2>
+            <div className='control'>
+              <input type='file' name='file' onChange={uploadDogImage} />
+            </div>
             <div className='control'>
               <label htmlFor='name'>Dog Name</label>
               <input type='text' required id='name' ref={dogNameInputRef} />

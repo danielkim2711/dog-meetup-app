@@ -125,7 +125,7 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
                   ? 'https://res.cloudinary.com/dluiyrdmg/image/upload/v1637453115/default_tbqndi.png'
                   : loadedProfile.picture
               }
-              alt='Test'
+              alt='User Profile'
             />
           </div>
           <div className={isUpdating ? 'hide' : 'profile__content'}>
@@ -154,7 +154,7 @@ const Profile = ({ loadedLoggedInUser, loadedProfile }) => {
           </div>
           <div className={isUpdating || 'hide'}>
             <form className='form' onSubmit={handleSubmit}>
-              <h1 className='form__title'>Update Profile</h1>
+              <h2 className='form__title'>Update Profile</h2>
               <div className='control'>
                 <input type='file' name='file' onChange={uploadImage} />
               </div>
