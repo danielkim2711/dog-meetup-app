@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useCookies } from 'react-cookie';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const SignIn = ({
@@ -76,6 +77,15 @@ const SignIn = ({
             ref={passwordInputRef}
           />
         </div>
+        <h4>
+          Forgot password? Click{' '}
+          <Link
+            to='/signin'
+            onClick={() => alert('Take a deep breath and think again!')}
+          >
+            here
+          </Link>
+        </h4>
         <div className='actions'>
           <button>Sign In</button>
         </div>

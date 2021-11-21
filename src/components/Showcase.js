@@ -4,8 +4,8 @@ const Showcase = () => {
   return (
     <div className='showcase'>
       <div className='showcase__container'>
-        <h1>Find Groups in a Minute!</h1>
-        <p>Other Groups are waiting for You!</p>
+        <h1>For Dog Lovers Out There!</h1>
+        <p>Find Groups in a Minute!</p>
       </div>
     </div>
   );

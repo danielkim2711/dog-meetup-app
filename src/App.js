@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 import Cookies from 'universal-cookie';
@@ -21,6 +21,21 @@ function App() {
   const cookies = new Cookies();
   const [loadedLoggedInUser, setloadedLoggedInUser] = useState([]);
   const [loadedProfile, setLoadedProfile] = useState([]);
+
+  useEffect(() => {
+    const profile = localStorage.getItem('loadedProfile');
+    profile && setLoadedProfile(JSON.parse(profile));
+    const user = localStorage.getItem('loadedLoggedInUser');
+    user && setloadedLoggedInUser(JSON.parse(user));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('loadedProfile', JSON.stringify(loadedProfile));
+    localStorage.setItem(
+      'loadedLoggedInUser',
+      JSON.stringify(loadedLoggedInUser)
+    );
+  });
 
   return (
     <CookiesProvider>
