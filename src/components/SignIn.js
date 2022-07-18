@@ -80,15 +80,6 @@ const SignIn = ({
             ref={passwordInputRef}
           />
         </div>
-        <h4>
-          Forgot password? Click{' '}
-          <Link
-            to='/signin'
-            onClick={() => alert('Take a deep breath and think again!')}
-          >
-            here
-          </Link>
-        </h4>
         <div className='actions'>
           <button>Sign In</button>
         </div>
