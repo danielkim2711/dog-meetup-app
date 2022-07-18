@@ -8,4 +8,4 @@ This is a full stack web application (React.js for the frontend and Django for t
 
 Users can view, create, update and delete profile, dogs and activities.
 
-https://dog-meetup-frontend.herokuapp.com
+https://dog-meetup-app-frontend.vercel.app
